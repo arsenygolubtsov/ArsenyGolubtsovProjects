@@ -17,7 +17,8 @@ else if (sign == '*') {
 res = a1*a2; }
 else if (sign == '/') {
 if (a2 == 0) {
-cout<<"Error"
+cout<<"Error";
+return -1;}
 res = a1/a2; }
 else if (sign == '%') {
 res = a1%a2; }
@@ -27,4 +28,9 @@ else if (sign == '|') {
 res = a1|a2; }
 else if (sign == '^') {
 res = a1^a2; }
-else if 
+else if ((sign == '>') && (sign1 == '>')) {
+res = a1>>a2; }
+else if ((sign == '<') && (sign1 == '<')) {
+res = a1<<a2; }
+else { cout<<"Error"; return -1; }
+cout<<"Result: "<<res<<end1; }
