@@ -3,17 +3,17 @@
 using namespace std;
 
 int palindrom(string name) {
-int a = 1, len = name.length();
-for (int i = 0; i<len/2; i++) {
-if (name[i] == name[len- 1 - i]) {a *= 1; }
-else { a *= 0; break; }
-}
-return a;
+	int a = 1, len = name.length();
+	for (int i = 0; i < len / 2; i++) {
+		if (name[i] == name[len - 1 - i]) { a *= 1; }
+		else { a *= 0; break; }
+	}
+	return a;
 }
 int main()
 {
-string name;
-getline(cin, name);
-cout << palindrom(name);
-cin.get();
+	string name;
+	getline(cin, name);
+	cout << palindrom(name);
+	cin.get();
 }
