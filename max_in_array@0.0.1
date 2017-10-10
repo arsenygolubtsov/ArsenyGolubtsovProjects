@@ -1,0 +1,30 @@
+#include <iostream>
+#include <sstream>
+
+int main()
+{
+	int i,b;
+	for (std::string string; std::getline(std::cin, string);) {
+		int a[10];
+		std::istringstream stream(string);
+		bool error = false;
+		for (int i = 0; i < 10; ++i) {
+			if (!(stream >> a[i])) {
+				error = true;
+				break;
+			}
+		}
+
+		b = a[0];
+		for (i = 1; i<10; ++i) {
+			if (b < a[i]) b = a[i];
+		}
+
+		if (!error) {
+			std::cout << b << " " ;
+		}
+		else {
+			std::cout << "An error has occured while reading numbers from line" << std::endl ;
+		}
+	}
+}
