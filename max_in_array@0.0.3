@@ -41,7 +41,7 @@ int main()
 
 			if (s > c) d = s;
 			if (s < c) d = c;
-			if (!error) {
+			if ((!error) && (!failure)) {
 				std::cout << d << " " << std::endl;
 			}
 			else {
