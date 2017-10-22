@@ -5,24 +5,6 @@ using namespace std;
 
 void right(int pole[4][4]) {
 	for (int j = 0; j<4; j++) {
-		int n = 0;
-		for (int i = 0; i<4; i++) {
-			if (pole[j][i] != 0) {
-				pole[j][n] = pole[j][i]; if (n != i) pole[j][i] = 0; n++; }
-		}
-		for (int i = 0; i<4; i++) {
-			if ((pole[j][i] == pole[j][i + 1]) && (pole[j][i] != 0)) {
-				pole[j][i] += pole[j][i + 1]; pole[j][i + 1] = 0; }
-		}
-		for (int i = 0; i<3; i++) {
-		    if (pole[j][i] == 0) {
-		      pole[j][i] = pole[j][i + 1]; pole[j][i + 1] = 0; }
-		}
-	}
-}
-
-void left(int pole[4][4]) {
-	for (int j = 0; j<4; j++) {
 		int n = 3;
 		for (int i = 3; i > -1; i--) {
 			if (pole[j][i] != 0) {
@@ -39,25 +21,28 @@ void left(int pole[4][4]) {
 	}
 }
 
-void down(int pole[4][4]) {
+void left(int pole[4][4]) {
 	for (int j = 0; j<4; j++) {
 		int n = 0;
-		for (int i = 0; i < 4; i++) {
-			if (pole[i][j] != 0) {
-				pole[n][j] = pole[i][j]; if (n != i) pole[i][j] = 0; n++; }
+		for (int i = 0; i<4; i++) {
+			if (pole[j][i] != 0) {
+				pole[j][n] = pole[j][i]; if (n != i) pole[j][i] = 0; n++;
+			}
 		}
 		for (int i = 0; i<4; i++) {
-			if ((pole[i][j] == pole[i + 1][j]) && (pole[i][j] != 0)) {
-				pole[i][j] += pole[i + 1][j]; pole[i + 1][j] = 0; }
+			if ((pole[j][i] == pole[j][i + 1]) && (pole[j][i] != 0)) {
+				pole[j][i] += pole[j][i + 1]; pole[j][i + 1] = 0;
+			}
 		}
 		for (int i = 0; i<3; i++) {
-			if (pole[i][j] == 0) {
-				pole[i][j] = pole[i + 1][j]; pole[i + 1][j] = 0; }
+			if (pole[j][i] == 0) {
+				pole[j][i] = pole[j][i + 1]; pole[j][i + 1] = 0;
+			}
 		}
 	}
 }
 
-void up(int pole[4][4]) {
+void down(int pole[4][4]) {
 	for (int j = 0; j<4; j++) {
 		int n = 3;
 		for (int i = 3; i > -1; i--) {
@@ -71,6 +56,27 @@ void up(int pole[4][4]) {
 		for (int i = 3; i > 0; i--) {
 			if (pole[i][j] == 0) {
 				pole[i][j] = pole[i - 1][j]; pole[i - 1][j] = 0; }
+		}
+	}
+}
+
+void up(int pole[4][4]) {
+	for (int j = 0; j<4; j++) {
+		int n = 0;
+		for (int i = 0; i < 4; i++) {
+			if (pole[i][j] != 0) {
+				pole[n][j] = pole[i][j]; if (n != i) pole[i][j] = 0; n++;
+			}
+		}
+		for (int i = 0; i<4; i++) {
+			if ((pole[i][j] == pole[i + 1][j]) && (pole[i][j] != 0)) {
+				pole[i][j] += pole[i + 1][j]; pole[i + 1][j] = 0;
+			}
+		}
+		for (int i = 0; i<3; i++) {
+			if (pole[i][j] == 0) {
+				pole[i][j] = pole[i + 1][j]; pole[i + 1][j] = 0;
+			}
 		}
 	}
 }
