@@ -1,0 +1,49 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+void selection_sort(double * & array, unsigned int size) {
+	for (int i = 0; i < size; i++) {
+		int min = i;
+		for (int j = i + 1; j < size; j++) {
+			if (array[j] < array[i]) {
+				min = j;
+			}
+		}
+		if (array[i] > array[min]) {
+			swap(array[i], array[min]);
+		}
+	}
+}
+
+bool read(double *array, unsigned int size){
+	string stroka;
+	getline(cin, stroka);
+	istringstream stream(stroka);
+	for (unsigned int i = 0; i<size; ++i){
+		if (!(stream >> array[i])){
+			cout << "error" << endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+int main(){
+	unsigned int size;
+	cin >> size;
+	cin.get();
+	double *array = new double[size];
+	if (read(array, size)){
+		selection_sort(array, size);
+		for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+	}
+	else {
+		cout << "An error has occured while reading input data.";
+	}
+	delete[]array;
+	return 0;
+}
+
