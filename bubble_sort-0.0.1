@@ -1,0 +1,44 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+void bubble_sort(double * & array, unsigned int size) {
+   for (unsigned int i=size-1;i>0;i--)
+    for (unsigned int j=0;j<i;j++)
+    if (array[j]>array[j+1]) {
+      unsigned int buf=array[j];
+     swap(array[j], array[j+1]);
+      array[j+1]=buf;
+     }    
+}
+
+bool read(double *array, unsigned int size){
+	string stroka;
+	getline(cin, stroka);
+	istringstream stream(stroka);
+	for (unsigned int i = 0; i<size; ++i){
+		if (!(stream >> array[i])){
+			cout << "error" << endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+int main(){
+	unsigned int size;
+	cin >> size;
+	cin.get();
+	double *array = new double[size];
+	if (read(array, size)){
+		bubble_sort(array, size);
+		for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+	}
+	else {
+		cout << "An error has occured while reading input data.";
+	}
+	delete[]array;
+	return 0;
+}
