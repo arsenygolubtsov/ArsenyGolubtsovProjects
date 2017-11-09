@@ -4,17 +4,16 @@
 using namespace std;
 
 void selection_sort(double * & array, unsigned int size) {
-	for (int i = 0; i < size; i++) {
-		int min = i;
-		for (int j = i + 1; j < size; j++) {
-			if (array[j] < array[i]) {
-				min = j;
-			}
-		}
-		if (array[i] > array[min]) {
-			swap(array[i], array[min]);
-		}
-	}
+for (unsigned int i=0;i<size-1;i++) {
+    unsigned int min=i; 
+    for (unsigned int j=i+1;j<size;j++){
+      if (array[j]<array[min])
+       swap(min, j);
+      }
+    unsigned int temp=array[i];
+     swap(array[i], array[min]);
+      array[min]=temp;
+  }
 }
 
 bool read(double *array, unsigned int size){
@@ -46,4 +45,3 @@ int main(){
 	delete[]array;
 	return 0;
 }
-
