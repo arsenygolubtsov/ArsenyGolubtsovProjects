@@ -1,0 +1,69 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+void merge_sort(double * & array, unsigned int first, unsigned int last) {
+    {
+        unsigned int middle, start, final, j;
+        unsigned int size = first + last;
+        int *mas = new int[100];
+        middle = (size) / 2;
+        start = first;
+        final = middle + 1;
+        for (j = first; j <= last; j++)
+            if ((start <= middle) && ((final > last) || (array[start] < array[final]))) {
+                mas[j] = array[start];
+                start++;
+            } else {
+                mas[j] = array[final];
+                final++;
+            }
+
+        for (j = first; j <= last; j++) array[j] = mas[j];
+        delete[]mas;
+    }
+}
+
+void MergeSort(double * & array, unsigned int first, unsigned int last)
+{
+    unsigned int size = first + last;
+    {
+        if (first<last)
+        {
+            MergeSort(array, first, (size)/2);
+            MergeSort(array, (size)/2+1, last);
+            merge_sort(array, first, last);
+        }
+    }
+}
+
+bool read(double *array, unsigned int size){
+    string stroka;
+    getline(cin, stroka);
+    istringstream stream(stroka);
+    for (unsigned int i = 0; i<size; ++i){
+        if (!(stream >> array[i])){
+            cout << "error" << endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+int main(){
+    unsigned int  first, last;
+    unsigned int size = first +last;
+    cin >> size;
+    cin.get();
+    double *array = new double[size];
+    if (read(array, size)){
+        merge_sort(array, first, last);
+        for (unsigned int i = 0; i<size; ++i)
+            cout << array[i] << " ";
+    }
+    else {
+        cout << "An error has occured while reading input data.";
+    }
+    delete[]array;
+    return 0;
+}
