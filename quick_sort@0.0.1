@@ -1,0 +1,59 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+void quick_sort(double * & array, unsigned int size) {
+    unsigned int i = 0;
+    unsigned int j = size - 1;
+    unsigned int mid = array[size / 2];
+    do {
+        while (array[i] < mid) {
+            i++;
+        }
+        while (array[j] > mid) {
+            j--;
+        }
+        if (i <= j) {
+            unsigned int tmp = array[i];
+          swap(array[i], array[j]);
+           array[j] = tmp;
+
+            i++;
+            j--;
+        }
+    } while (i <= j);
+    if(j > 0) {
+        quick_sort(array, j + 1);
+    }
+}
+
+bool read(double *array, unsigned int size){
+    string stroka;
+    getline(cin, stroka);
+    istringstream stream(stroka);
+    for (unsigned int i = 0; i<size; ++i){
+        if (!(stream >> array[i])){
+            cout << "error" << endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+int main(){
+    unsigned int size;
+    cin >> size;
+    cin.get();
+    double *array = new double[size];
+    if (read(array, size)){
+        quick_sort(array, size);
+        for (unsigned int i = 0; i<size; ++i)
+            cout << array[i] << " ";
+    }
+    else {
+        cout << "An error has occured while reading input data.";
+    }
+    delete[]array;
+    return 0;
+}
