@@ -57,7 +57,7 @@ int main(){
     cin.get();
     double *array = new double[size];
     if (read(array, size)){
-        merge_sort(array, first, last);
+        MergeSort(array, 0, size - 1);
         for (unsigned int i = 0; i<size; ++i)
             cout << array[i] << " ";
     }
