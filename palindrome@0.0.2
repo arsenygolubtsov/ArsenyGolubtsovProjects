@@ -4,14 +4,14 @@
 using namespace std;
 
 bool palindrom(string name) {
-    int len = name.length();
-    for (int i = 0; i < len / 2; i++) {
-        if (name[i] != name[len - 1 - i])
-        {
+    int left_index = 0;
+    int right_index = name.length()-1; 
+    while(left_index < right_index){
+        if( name[left_index++] != name[right_index--]){
             return false;
         }
-        return true;
     }
+    return true;
 }
 string fixing(string name) {
     int len = name.length();
