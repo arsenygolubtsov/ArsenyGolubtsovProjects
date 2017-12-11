@@ -36,7 +36,7 @@ int count(int a, char znak, int b) {
 int main()
 {
 	string string;
-	int begin, middle, last, itog = 0;
+	int begin, middle, last = 0;
 	char znak1, znak2;
 	getline(cin, string);
 	istringstream stream(string);
@@ -44,24 +44,17 @@ int main()
 	stream >> znak1;
 	if (!(stream >> middle)) { cout << begin << endl; exit(0); }
 	while (stream >> znak2) {
-		bool lastprior = false;
 		stream >> last;
 		int prior1 = prior(znak1), prior2 = prior(znak2);
 		if ((prior1 > prior2) || (prior1 == prior2)) {
 			begin = count(begin, znak1, middle);
-			itog = begin;
 			middle = last;
 			znak1 = znak2;
 		}
 		else if (prior2 > prior1) {
 			middle = count(middle, znak2, last);
-			itog = middle;
-			lastprior = true;
 		}
 		else { stop = true; cout << "Error"; break; }
-		if (!lastprior) itog = count(begin, znak1, middle);
-		else itog = count(begin, znak1, middle);
 	}
 	if (!(stream >> znak2)) { cout << count(begin, znak1, middle) << endl; stop = false; return 0; }
-	if (!stop) cout << itog << std::endl;
 }
