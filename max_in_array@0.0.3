@@ -24,11 +24,11 @@ bool read_numbers(int array[10])
  {
  int array1[10];
  int array2[10];
- int max1 = 0;
- int max2 = 0;
- int max;
  
     if( read_numbers( array1 ) && read_numbers( array2 ) ) {
+         int max1 = array1[0] + array2[0];
+ int max2 = array1[0] + array2[1];
+ int max;
 			for( unsigned int i = 1; i < 10; ++i ) {
 			    	for( unsigned int j = 1; j < 10; ++j ) {
  				if ((i == j) && (max1 < array1[i]+array2[j]))
