@@ -1,59 +1,43 @@
 #include <iostream>
 #include <sstream>
 
-int main()
-{
- for( std::string line; std::getline( std::cin, line ); ) {
-         bool success_1 = true;
-         int array[10];
-         std::istringstream stream( line );
-         for( unsigned int i = 0; i < 10; ++i ) {
-                 if( !( stream >> array[i] ) ) {
-                         success_1 = false;
-  		         break;
-	            }
-		}
-		
-		if( success_1 ) {
-		        int max_1 = array[0];
-		        for( unsigned int i = 1; i < 10; ++i ) {
-			if( array[i] > max_1 ) {
- 				max_1 = array[i];
- 			}
- 		}
-		}
- 		 else {
-			std::cerr << "An error has occured while reading numbers from line\n";
-	}
+
+bool read_numbers(int array[10])
+  {
  
-
-for( std::string line; std::getline( std::cin, line ); ) {
-         bool success_2 = true;
-         int array[10];
-         std::istringstream stream( line );
-         for( unsigned int j = 0; j < 10; ++j ) {
-                 if( !( stream >> array[j] ) ) {
-                         success_2 = false;
-  		         break;
-	            }
-		}
-
-	        if( success_2 ) {
-		        int max_2 = array[0];
-		        for( unsigned int j = 1; j < 10; ++j ) {
-			if( array[j] > max_2 ) {
- 				max_2 = array[j];
+ 	for( std::string line; std::getline( std::cin, line ); ) {
+ 		bool success = true;
+ 		std::istringstream stream( line );
+ 		for( unsigned int i = 0; i < 10; ++i ) {
+ 			if( !( stream >> array[i] ) ) {
+ 				success = false;
+  				break;
  			}
- 		}
-	        }
- 		 else {
-			std::cerr << "An error has occured while reading numbers from line\n";
-	        } 
-
-
-			int max = max_1 + max_2;
-       }
-   }
-
-			std::cout << " max: " << max << std::endl;
-  }
+  		}
+  		
+ 	 return success;
+ 	 
+ 	}
+ }
+ 
+ int main()
+ {
+ int array1[10];
+ int array2[10];
+ int max = 0;
+ 
+    if( read_numbers( array1 ) && read_numbers( array2 ) ) {
+			for( unsigned int i = 1; i < 10; ++i ) {
+			    	for( unsigned int j = 1; j < 10; ++j ) {
+ 				 if (max < array1[i]+array2[j])
+ 				 max = array1[i]+array2[j];
+			
+ 				}
+ 			}
+  
+ 			std::cout << " max: " << max << std::endl;
+    }
+ 		else {
+ 			std::cerr << "An error has occured while reading numbers from line\n";
+    	}
+ }
