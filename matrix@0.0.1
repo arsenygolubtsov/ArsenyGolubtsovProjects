@@ -36,10 +36,7 @@ int main()
 					cout << endl;
 				}
 			}
-			else {
-				cout << "An error has occured while reading input data" << endl;
-				return -1;
-			}
+		
 		}
 		else if (znak == "-") {
 			if (readmatrix(matrix2)) {
@@ -52,10 +49,7 @@ int main()
 					cout << endl;
 				}
 			}
-			else {
-				cout << "An error has occured while reading input data" << endl;
-				return -1;
-			}
+		
 		}
 		else if (znak == "*") {
 			if (readmatrix(matrix2)) {
@@ -70,17 +64,10 @@ int main()
 					cout << endl;
 				}
 			}
-			else {
-				cout << "An error has occured while reading input data" << endl;
-				return -1;
-			}
-		}
-		else {
-			cout << "An error has occured while reading input data" << endl;
-			return -1;
 		}
 	}
+		
 	else {
-		cout << "An error has occured while reading input data" << endl;
+		cerr << "An error has occured while reading input data\n";
 	}
 }
