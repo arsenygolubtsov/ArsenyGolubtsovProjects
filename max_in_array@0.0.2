@@ -4,48 +4,52 @@
 int main()
 {
  for( std::string line; std::getline( std::cin, line ); ) {
-         bool success 1 = true;
+         bool success_1 = true;
          int array[10];
          std::istringstream stream( line );
          for( unsigned int i = 0; i < 10; ++i ) {
                  if( !( stream >> array[i] ) ) {
-                         success 1 = false;
+                         success_1 = false;
   		         break;
 	            }
 		}
 		
-		if( success 1 ) }
-		        int max 1 = array[0];
+		if( success_1 ) {
+		        int max_1 = array[0];
 		        for( unsigned int i = 1; i < 10; ++i ) {
-			if( array[i] > max 1 ) {
- 				max 1 = array[i];
+			if( array[i] > max_1 ) {
+ 				max_1 = array[i];
  			}
  		}
 
 for( std::string line; std::getline( std::cin, line ); ) {
-         bool success 2 = true;
+         bool success_2 = true;
          int array[10];
          std::istringstream stream( line );
          for( unsigned int j = 0; j < 10; ++j ) {
                  if( !( stream >> array[j] ) ) {
-                         success 2 = false;
+                         success_2 = false;
   		         break;
 	            }
 		}
 
-	        if( success 2 ) }
-		        int max 2 = array[0];
+	        if( success_2 ) {
+		        int max_2 = array[0];
 		        for( unsigned int j = 1; j < 10; ++j ) {
-			if( array[j] > max 2 ) {
- 				max 2 = array[j];
+			if( array[j] > max_2 ) {
+ 				max _2 = array[j];
  			}
  		}
 
-			int max = max 1 + max 2;
+			int max = max_1 + max_2;
 
 			std::cout << "max: " << max << std::endl;
+			}
+		}
 	        else {
 			std::cerr << "An error has occured while reading numbers from line\n";
   		}
+	   }
+      }
   }
 			
