@@ -21,6 +21,11 @@ int main()
  				max_1 = array[i];
  			}
  		}
+		}
+ 		 else {
+			std::cerr << "An error has occured while reading numbers from line\n";
+	}
+ 
 
 for( std::string line; std::getline( std::cin, line ); ) {
          bool success_2 = true;
@@ -37,19 +42,18 @@ for( std::string line; std::getline( std::cin, line ); ) {
 		        int max_2 = array[0];
 		        for( unsigned int j = 1; j < 10; ++j ) {
 			if( array[j] > max_2 ) {
- 				max _2 = array[j];
+ 				max_2 = array[j];
  			}
  		}
+	        }
+ 		 else {
+			std::cerr << "An error has occured while reading numbers from line\n";
+	        } 
+
 
 			int max = max_1 + max_2;
+       }
+   }
 
-			std::cout << "max: " << max << std::endl;
-			}
-		}
-	        else {
-			std::cerr << "An error has occured while reading numbers from line\n";
-  		}
-	   }
-      }
+			std::cout << " max: " << max << std::endl;
   }
-			
