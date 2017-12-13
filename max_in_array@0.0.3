@@ -3,21 +3,21 @@
 
 
 bool read_numbers(int array[10])
-  {
+{
  
- 	for( std::string line; std::getline( std::cin, line ); ) {
- 		bool success = true;
- 		std::istringstream stream( line );
- 		for( unsigned int i = 0; i < 10; ++i ) {
- 			if( !( stream >> array[i] ) ) {
- 				success = false;
-  				break;
- 			}
-  		}
+ for( std::string line; std::getline( std::cin, line ); ) {
+ 	bool success = true;
+ 	std::istringstream stream( line );
+ 	for( unsigned int i = 0; i < 10; ++i ) {
+ 		if( !( stream >> array[i] ) ) {
+ 			success = false;
+  			break;
+ 		}
+  	}
   		
- 	 return success;
+        return success;
  	 
- 	}
+      }
  }
  
  int main()
@@ -25,25 +25,25 @@ bool read_numbers(int array[10])
  int array1[10];
  int array2[10];
  
-    if( read_numbers( array1 ) && read_numbers( array2 ) ) {
+ if( read_numbers( array1 ) && read_numbers( array2 ) ) {
          int max1 = array1[0] + array2[0];
- int max2 = array1[0] + array2[1];
- int max;
-			for( unsigned int i = 0; i < 10; ++i ) {
-			    	for( unsigned int j = 0; j < 10; ++j ) {
- 				if ((i == j) && (max1 < array1[i]+array2[j]))
- 				 max1 = array1[i]+array2[j];
- 				 if ((i == j - 1) && (max2 < array1[i]+array2[j]))
- 				 max2 = array1[i]+array2[j];
+         int max2 = array1[0] + array2[1];
+         int max;
+		for( unsigned int i = 0; i < 10; ++i ) {
+			    for( unsigned int j = 0; j < 10; ++j ) {
+ 			       if ((i == j) && (max1 < array1[i]+array2[j]))
+ 			       max1 = array1[i]+array2[j];
+ 				if ((i == j - 1) && (max2 < array1[i]+array2[j]))
+ 			        max2 = array1[i]+array2[j];
  				 if (max1 > max2) max = max1;
  				 else max = max2;
 			
- 				}
  			}
+ 		}
   
- 			std::cout << " max: " << max << std::endl;
-    }
- 		else {
- 			std::cerr << "An error has occured while reading numbers from line\n";
-    	}
+ 		std::cout << " max: " << max << std::endl;
+        }
+ 	else {
+ 		std::cerr << "An error has occured while reading numbers from line\n";
+        }
  }
