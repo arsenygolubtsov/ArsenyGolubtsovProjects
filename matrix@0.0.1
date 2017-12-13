@@ -12,6 +12,7 @@ bool readmatrix(int matrix[3][3])
 		for (int j = 0; j < 3; ++j) {
 			if (!(stream >> matrix[i][j])) {
 				error = false;
+			        cerr << "An error has occured while reading input data\n";exit(0);
 				break;
 			}
 		}
