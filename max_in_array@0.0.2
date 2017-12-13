@@ -5,19 +5,19 @@
 bool read_numbers(int array[10])
   {
  
- 	for( std::string line; std::getline( std::cin, line ); ) {
- 		bool success = true;
- 		std::istringstream stream( line );
- 		for( unsigned int i = 0; i < 10; ++i ) {
- 			if( !( stream >> array[i] ) ) {
- 				success = false;
-  				break;
- 			}
-  		}
+    for( std::string line; std::getline( std::cin, line ); ) {
+ 	bool success = true;
+ 	std::istringstream stream( line );
+ 	for( unsigned int i = 0; i < 10; ++i ) {
+ 		if( !( stream >> array[i] ) ) {
+ 			success = false;
+  			break;
+ 		}
+  	}
   		
- 	 return success;
+ 	return success;
  	 
- 	}
+     }
  }
  
  int main()
@@ -25,19 +25,19 @@ bool read_numbers(int array[10])
  int array1[10];
  int array2[10];
  
-    if( read_numbers( array1 ) && read_numbers( array2 ) ) {
-         int max = array1[0] + array2[0];
-			for( unsigned int i = 0; i < 10; ++i ) {
-			    	for( unsigned int j = 0; j < 10; ++j ) {
- 				 if (max < array1[i]+array2[j])
- 				 max = array1[i]+array2[j];
+ if( read_numbers( array1 ) && read_numbers( array2 ) ) {
+     int max = array1[0] + array2[0];
+		for( unsigned int i = 0; i < 10; ++i ) {
+			    for( unsigned int j = 0; j < 10; ++j ) {
+ 			       if (max < array1[i]+array2[j])
+ 			       max = array1[i]+array2[j];
 			
- 				}
  			}
+ 		}
   
- 			std::cout << " max: " << max << std::endl;
-    }
- 		else {
- 			std::cerr << "An error has occured while reading numbers from line\n";
-    	}
+ 		std::cout << " max: " << max << std::endl;
+        }
+ 	else {
+ 		std::cerr << "An error has occured while reading numbers from line\n";
+        }
  }
