@@ -24,9 +24,7 @@ void add ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 	for ( int i = 0; i < 3; i++ ) {
 		for ( int j = 0; j < 3; j++ ) {
 		    matrix3[i][j] = matrix1[i][j] + matrix2[i][j];
-			 cout <<matrix3[i][j] << " ";
 		}
-		cout << endl;
 	}
 }
 
@@ -34,9 +32,7 @@ void sub ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 	for ( int i = 0; i < 3; i++ ) {
 		for ( int j = 0; j < 3; j++ ) {
 		    matrix3[i][j] = matrix1[i][j] - matrix2[i][j];
-			 cout <<matrix3[i][j] << " ";
 		}
-		cout << endl;
 	}
 }
 
@@ -47,7 +43,14 @@ void mult ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 		    for ( int k = 0; k < 3; k++ ) 
 		    result += matrix1[i][k] * matrix2[k][j];
 		    matrix3[i][j] = result;
-			 cout << matrix3[i][j] << " ";
+		}
+	}
+}
+
+void print ( int matrix3[3][3] ) {
+    for ( int i = 0; i < 3; i++ ) {
+		for ( int j = 0; j < 3; j++ ) {
+             cout <<matrix3[i][j] << " ";
 		}
 		cout << endl;
 	}
@@ -64,12 +67,15 @@ int main()
 	if (readmatrix( matrix2 )) {
 		if ( znak == "+" ) {
 			add(matrix1, matrix2, matrix3);
+			print(matrix3);
 		}
 		    else if ( znak == "-" ) {
 			sub(matrix1, matrix2, matrix3);
+			print(matrix3);
 		}	
 	        else if ( znak == "*" ) {
 			mult(matrix1, matrix2, matrix3);
+			print(matrix3);
 	        }
 	    }
          }
