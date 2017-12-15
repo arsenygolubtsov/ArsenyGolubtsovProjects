@@ -20,8 +20,7 @@ bool readmatrix(int matrix[3][3])
 	return error;
 }
 
-void add ( int matrix1[3][3], int matrix2[3][3] ) {
-    int matrix3[3][3];
+void add ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 	for ( int i = 0; i < 3; i++ ) {
 		for ( int j = 0; j < 3; j++ ) {
 		    matrix3[i][j] = matrix1[i][j] + matrix2[i][j];
@@ -31,8 +30,7 @@ void add ( int matrix1[3][3], int matrix2[3][3] ) {
 	}
 }
 
-void sub ( int matrix1[3][3], int matrix2[3][3] ) {
-    int matrix3[3][3];
+void sub ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 	for ( int i = 0; i < 3; i++ ) {
 		for ( int j = 0; j < 3; j++ ) {
 		    matrix3[i][j] = matrix1[i][j] - matrix2[i][j];
@@ -42,14 +40,14 @@ void sub ( int matrix1[3][3], int matrix2[3][3] ) {
 	}
 }
 
-void mult ( int matrix1[3][3], int matrix2[3][3] ) {
+void mult ( int matrix1[3][3], int matrix2[3][3], int matrix3[3][3] ) {
 	for ( int i = 0; i < 3; i++ ) {
 		for ( int j = 0; j < 3; j++ ) {
 		    int result = 0;
 		    for ( int k = 0; k < 3; k++ ) 
 		    result += matrix1[i][k] * matrix2[k][j];
-		    
-			 cout << result << " ";
+		    matrix3[i][j] = result;
+			 cout << matrix3[i][j] << " ";
 		}
 		cout << endl;
 	}
@@ -58,24 +56,24 @@ void mult ( int matrix1[3][3], int matrix2[3][3] ) {
 int main()
 {
     int matrix1[3][3];
-	int matrix2[3][3];
-	string znak;
-	if (readmatrix( matrix1 )) {
-		getline( cin, znak );
-		if (readmatrix( matrix2 )) {
-			if ( znak == "+" ) {
-				add(matrix1, matrix2);
-			}
+    int matrix2[3][3];
+    int matrix3[3][3];
+    string znak;
+    if (readmatrix( matrix1 )) {
+	getline( cin, znak );
+	if (readmatrix( matrix2 )) {
+		if ( znak == "+" ) {
+			add(matrix1, matrix2, matrix3);
+		}
 		    else if ( znak == "-" ) {
-				sub(matrix1, matrix2);
-			}	
+			sub(matrix1, matrix2, matrix3);
+		}	
 	        else if ( znak == "*" ) {
-				mult(matrix1, matrix2);
+			mult(matrix1, matrix2, matrix3);
 	        }
 	    }
-	}
+         }
     else {
 		cerr << "An error has occured while reading input data\n";
     }
 }		
-
