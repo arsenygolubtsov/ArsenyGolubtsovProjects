@@ -1,18 +1,19 @@
-	#include <iostream>
+#include <iostream>
 #include <sstream>
 #include <string>
- 
+
 using namespace std;
- 
+
 int main()
 {
 	string string;
-	int a, b;
+	int a, b, i=0;
 	char znak;
 	getline(cin, string);
 	istringstream stream(string);
-	stream >> a;
-	bool stop = false;
+	if (!(stream >> a)){
+	    int i=i+1;}
+	else{
 	while (stream >> znak) {
 		stream >> b;
 		if (znak == '+') a = a + b;
@@ -20,11 +21,9 @@ int main()
 		else if (znak == '*') a = a*b;
 		else if (znak == '/') {
 			if (b == 0) cout << "Error";
-			else a = a / b;}
-                else {stop = true; }
-	             if (!stop) cout << a << endl; 
-            else cout << "Error" << endl;
-      }
+			else a = a / b;
+		}
+	}
+	}
+	if (i=1){cout<<"Error";}
 }
- 	
-
