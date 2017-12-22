@@ -10,9 +10,7 @@ for (unsigned int i=0;i<size-1;i++) {
       if (array[j]<array[min])
        swap(min, j);
       }
-    unsigned int temp=array[i];
      swap(array[i], array[min]);
-      array[min]=temp;
   }
 }
 
@@ -22,7 +20,6 @@ bool read(double *array, unsigned int size){
 	istringstream stream(stroka);
 	for (unsigned int i = 0; i<size; ++i){
 		if (!(stream >> array[i])){
-			cout << "error" << endl;
 			return false;
 		}
 	}
