@@ -3,11 +3,11 @@
 #include <string>
 using namespace std;
 
-void quick_sort(double * & array, unsigned int size) {
-    unsigned int i = 0;
-    unsigned int j = size - 1;
-    unsigned int mid = array[size / 2];
-    do {
+void quick_sort(int * array, int first, int last) {
+    unsigned int i = first;
+    unsigned int j = last;
+    unsigned int mid = array[(first+last) / 2];
+     while (i <= j) {
         while (array[i] < mid) {
             i++;
         }
@@ -15,26 +15,26 @@ void quick_sort(double * & array, unsigned int size) {
             j--;
         }
         if (i <= j) {
-            unsigned int tmp = array[i];
           swap(array[i], array[j]);
-           array[j] = tmp;
 
             i++;
             j--;
         }
-    } while (i <= j);
-    if(j > 0) {
-        quick_sort(array, j + 1);
+    } 
+    if(j > first) {
+        quick_sort(array, first, j);
+    }
+     if(last > i) {
+        quick_sort(array, i, last);
     }
 }
 
-bool read(double *array, unsigned int size){
+bool read(int *array, unsigned int size){
     string stroka;
     getline(cin, stroka);
     istringstream stream(stroka);
     for (unsigned int i = 0; i<size; ++i){
         if (!(stream >> array[i])){
-            cout << "error" << endl;
             return false;
         }
     }
@@ -45,9 +45,9 @@ int main(){
     unsigned int size;
     cin >> size;
     cin.get();
-    double *array = new double[size];
+   int *array = new int[size];
     if (read(array, size)){
-        quick_sort(array, size);
+        quick_sort(array, 0, size-1);
         for (unsigned int i = 0; i<size; ++i)
             cout << array[i] << " ";
     }
