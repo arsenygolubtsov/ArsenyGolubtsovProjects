@@ -7,9 +7,7 @@ void bubble_sort(double * & array, unsigned int size) {
    for (unsigned int i=size-1;i>0;i--)
     for (unsigned int j=0;j<i;j++)
     if (array[j]>array[j+1]) {
-      unsigned int buf=array[j];
      swap(array[j], array[j+1]);
-      array[j+1]=buf;
      }    
 }
 
@@ -19,7 +17,6 @@ bool read(double *array, unsigned int size){
 	istringstream stream(stroka);
 	for (unsigned int i = 0; i<size; ++i){
 		if (!(stream >> array[i])){
-			cout << "error" << endl;
 			return false;
 		}
 	}
