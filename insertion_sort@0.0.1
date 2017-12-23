@@ -4,7 +4,7 @@
 using namespace std;
 
 void insertion_sort(double * & array, unsigned int size) {
-    for (unsigned int i=0;i<size;i++) { 
+    for (unsigned int i=1;i<size;i++) { 
     for (unsigned int j=i; j>0 ; j--)
      if(array[j-1]>array[j]){
                 swap(array[j-1], array[j]);
@@ -21,7 +21,6 @@ bool read(double *array, unsigned int size){
 	istringstream stream(stroka);
 	for (unsigned int i = 0; i<size; ++i){
 		if (!(stream >> array[i])){
-			cout << "error" << endl;
 			return false;
 		}
 	}
