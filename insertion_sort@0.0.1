@@ -3,16 +3,16 @@
 #include <string>
 using namespace std;
 
-void insertion_sort(double * & array, unsigned int size) {
+void insertion_sort(double *array, unsigned int size) {
     for (unsigned int i=1;i<size;i++) { 
-    for (unsigned int j=i; j>0 ; j--)
-     if(array[j-1]>array[j]){
-                swap(array[j-1], array[j]);
-     }
-      else{
-                break;
-            }
-  }
+         for (unsigned int j=i; j>0 ; j--)
+              if(array[j-1]>array[j]){
+                 swap(array[j-1], array[j]);
+              }
+              else{
+                  break;
+              }
+    }
 }
 
 bool read(double *array, unsigned int size){
@@ -27,6 +27,11 @@ bool read(double *array, unsigned int size){
 	return true;
 }
 
+void print ( double *array, unsigned int size ) {
+    for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+}
+
 int main(){
 	unsigned int size;
 	cin >> size;
@@ -34,11 +39,10 @@ int main(){
 	double *array = new double[size];
 	if (read(array, size)){
 		insertion_sort(array, size);
-		for (unsigned int i = 0; i<size; ++i)
-		cout << array[i] << " ";
+		print(array, size);
 	}
 	else {
-		cout << "An error has occured while reading input data.";
+		cerr << "An error has occured while reading input data.";
 	}
 	delete[]array;
 	return 0;
