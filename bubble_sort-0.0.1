@@ -3,12 +3,12 @@
 #include <string>
 using namespace std;
 
-void bubble_sort(double * & array, unsigned int size) {
-   for (unsigned int i=size-1;i>0;i--)
-    for (unsigned int j=0;j<i;j++)
-    if (array[j]>array[j+1]) {
-     swap(array[j], array[j+1]);
-     }    
+void bubble_sort(double *array, unsigned int size) {
+    for (unsigned int i=size-1;i>0;i--)
+         for (unsigned int j=0;j<i;j++)
+              if (array[j]>array[j+1]) {
+                  swap(array[j], array[j+1]);
+              }    
 }
 
 bool read(double *array, unsigned int size){
@@ -23,6 +23,11 @@ bool read(double *array, unsigned int size){
 	return true;
 }
 
+void print ( double *array, unsigned int size ) {
+    for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+}
+
 int main(){
 	unsigned int size;
 	cin >> size;
@@ -30,11 +35,10 @@ int main(){
 	double *array = new double[size];
 	if (read(array, size)){
 		bubble_sort(array, size);
-		for (unsigned int i = 0; i<size; ++i)
-		cout << array[i] << " ";
+		print(array, size);
 	}
 	else {
-		cout << "An error has occured while reading input data.";
+		cerr << "An error has occured while reading input data.";
 	}
 	delete[]array;
 	return 0;
