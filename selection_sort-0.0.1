@@ -18,7 +18,7 @@ bool read(double * & array, unsigned int size){
 	string stroka;
 	getline(cin, stroka);
 	istringstream stream(stroka);
-    for (unsigned int i = 0; i<size; ++i){
+        for (unsigned int i = 0; i<size; ++i){
 		if (!(stream >> array[i])){
 			return false;
 		}
@@ -35,7 +35,7 @@ int main(){
 	unsigned int size;
 	cin >> size;
 	cin.get();
-    double *array = new double[size];
+        double *array = new double[size];
 	if (read(array, size)){
 		selection_sort(array, size);
 		print(array, size);
