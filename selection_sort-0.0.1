@@ -4,17 +4,17 @@
 using namespace std;
 
 void selection_sort(double * & array, unsigned int size) {
-for (unsigned int i=0;i<size-1;i++) {
+    for (unsigned int i=0;i<size-1;i++) {
     unsigned int min=i; 
     for (unsigned int j=i+1;j<size;j++){
-      if (array[j]<array[min])
-       swap(min, j);
-      }
+        if (array[j]<array[min])
+        swap(min, j);
+    }
      swap(array[i], array[min]);
   }
 }
 
-bool read(double *array, unsigned int size){
+bool read(double * & array, unsigned int size){
 	string stroka;
 	getline(cin, stroka);
 	istringstream stream(stroka);
@@ -26,6 +26,11 @@ bool read(double *array, unsigned int size){
 	return true;
 }
 
+void print ( double *array, unsigned int size ) {
+    for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+}
+
 int main(){
 	unsigned int size;
 	cin >> size;
@@ -33,8 +38,7 @@ int main(){
 	double *array = new double[size];
 	if (read(array, size)){
 		selection_sort(array, size);
-		for (unsigned int i = 0; i<size; ++i)
-		cout << array[i] << " ";
+		print(array, size);
 	}
 	else {
 		cout << "An error has occured while reading input data.";
