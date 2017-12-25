@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-void quick_sort(int * array, int first, int last) {
+void quick_sort(double * array, int first, int last) {
     int i = first;
     int j = last;
     int mid = array[(first+last) / 2];
@@ -29,7 +29,7 @@ void quick_sort(int * array, int first, int last) {
     }
 }
 
-bool read(int *array, unsigned int size){
+bool read(double *array, unsigned int size){
     string stroka;
     getline(cin, stroka);
     istringstream stream(stroka);
@@ -41,18 +41,22 @@ bool read(int *array, unsigned int size){
     return true;
 }
 
+void print ( double *array, unsigned int size ) {
+    for (unsigned int i = 0; i<size; ++i)
+		cout << array[i] << " ";
+}
+
 int main(){
     unsigned int size;
     cin >> size;
     cin.get();
-   int *array = new int[size];
+   double *array = new double[size];
     if (read(array, size)){
         quick_sort(array, 0, size-1);
-        for (unsigned int i = 0; i<size; ++i)
-            cout << array[i] << " ";
+        print(array, size);
     }
     else {
-        cout << "An error has occured while reading input data.";
+        cerr << "An error has occured while reading input data.";
     }
     delete[]array;
     return 0;
