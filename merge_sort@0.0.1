@@ -5,7 +5,7 @@ using namespace std;
 void merge_sort(double *array, unsigned int first, unsigned int last) {
         unsigned int middle, start, final, j;
         unsigned int size = first + last;
-        int *mas = new int[size];
+        int *mas = new int[last-first+1];
         middle = (size) / 2;
         start = first;
         final = middle + 1;
