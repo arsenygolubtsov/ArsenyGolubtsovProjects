@@ -1,191 +1,126 @@
 #include <iostream>
+
 using namespace std;
 
-void show_game (char *array){
-	cout << "    1   2   3" << endl;
-	cout << "  +---+---+---+" << endl;
-	for (unsigned int i=0; i<9; i++){
-		if (i==3 || i==6) cout << endl << "  +---+---+---+" << endl;
-		if(i==0) {
-			cout << "a | ";
-		}
-		if(i==3) {
-			cout << "b | ";
-		}
-		if(i==6) {
-			cout << "c | ";
-		}
-		if (array[i]=='X' || array[i]=='O') {
-			cout << array[i] << " | ";
-		}
-		else cout << "  | ";
-	}
-	cout << endl << "  +---+---+---+" << endl;
+void delete_pamyat (char** matrix, unsigned int rows) {
+	for(unsigned int i=0; i<rows; i++){	
+		delete []matrix[i];
+	}			
+	delete []matrix;
 }
 
-void show_available_moves (char *array, char op){
+char** pamyat_dlya_matritzi(char** matrix, unsigned int rows, unsigned int columns){
+	matrix = new char *[ rows ];
+	for( unsigned int i = 0; i < rows; ++i ) {
+    	matrix[ i ] = new char[ columns ];
+   		for( unsigned int j = 0; j < columns; ++j ) {
+     		matrix[ i ][ j ] = ' ';
+   		}
+	}
+	return matrix;
+}
+
+void show_game (char **array){
+	cout << "    1   2   3" << endl;
+	cout << "  +---+---+---+" << endl;
+	for (unsigned int i=0; i<3; i++){
+		for (unsigned int j=0; j<3; j++){
+			if(i==0 && j==0) {
+				cout << "a | ";
+			}
+			if(i==1 && j==0) {
+				cout << "b | ";
+			}
+			if(i==2 && j==0) {
+				cout << "c | ";
+			}
+			if (array[i][j]=='X' || array[i][j]=='O') {
+				cout << array[i][j] << " | ";
+			}
+			else cout << "  | ";
+			if (j==2) {
+				cout << endl << "  +---+---+---+" << endl;
+			}
+		}
+	}
+}
+
+void show_available_moves (char **array, char op){
 	unsigned int k=0;
-	for(unsigned int i=0; i<9; i++){
-		if (!(array[i]=='X' || array[i]=='O')) {
-			if (i<3) {
-				cout << ++k << ". mark cell a" << i+1 << " as " << op << endl;
-			}
-			if (i>2 && i<6) {
-				cout << ++k << ". mark cell b" << i-2 << " as " << op << endl;
-			}
-			if (i>5) {
-				cout << ++k << ". mark cell c" << i-5 << " as " << op << endl;
+	for (unsigned int i=0; i<3; i++){
+		for (unsigned int j=0; j<3; j++){
+			if (!(array[i][j]=='X' || array[i][j]=='O')) {
+				if (i==0){
+					cout << ++k << ". mark cell a" << j+1 << " as " << op << endl;
+				}
+				if (i==1){
+					cout << ++k << ". mark cell b" << j+1 << " as " << op << endl;
+				}
+				if (i==2){
+					cout << ++k << ". mark cell c" << j+1 << " as " << op << endl;
+				}
 			}
 		}
 	}
 	cout << ++k << ". quit" << endl;
 }
 
-bool making_move (char *array, short move, char op){
-	switch (move){
-		case 1:{
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 2:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (k==2){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 3:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==3){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 4:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==4){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 5:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==5){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 6:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==6){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 7:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==7){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 8:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==8){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-		case 9:{
-			unsigned int k=0;
-			for (unsigned int i=0; i<9; i++){
-				if (!(array[i]=='X' || array[i]=='O')){
-					k++;
-				}
-				if (!(array[i]=='X' || array[i]=='O') && k==9){
-					array[i]=op;
-					return true;
-				}
-			}
-			break;
-		}
-	}
-	return false;
-}
-
-bool win_game(char* array){
-	for (unsigned i=0; i<3; i++){
-		if ((array[i]=='X' || array[i]=='O') && array[i]==array[i+3] && array[i]==array[i+6]) return true;
-	}
-	for (unsigned i=0; i<9; i+=3){
-		if ((array[i]=='X' || array[i]=='O') && array[i]==array[i+1] && array[i]==array[i+2]) return true;
-	}
-	if ((array[0]=='X' || array[0]=='O' || array[2]=='X' || array[2]=='O') && array[0]==array[4] && array[0]==array[8] || array[2]==array[4] && array[2]==array[6]) return true;
-	return false;
-}
-
-bool proverka(char* array){
+bool making_move (char **array, short move, char op){
 	unsigned int k=0;
-	for (unsigned int i=0; i<9; i++){
-		if (!(array[i]=='X' || array[i]=='O')){
-			k++;
-		}
-		if (k>0) return true;
+	for (unsigned int i=0; i<3; i++){
+		for (unsigned int j=0; j<3; j++){
+			if (!(array [i][j] == 'X' || array [i][j] == 'O')) {
+				k++;
+			}
+			if (k==move) {
+				array [i][j] = op;
+				return true;
+			}
+		}	
+	}
+	return false;
+}
 
+bool win_game(char** array){
+	unsigned int k=0, t=0;
+	for (unsigned j=0; j<3; j++){
+		for (unsigned int i=0; i<2; i++){
+			if ((array[i][j]=='X' || array[i][j]=='O') && array[i][j]==array[i+1][j]) k++;
+			if (k==2) return true;
+		}
+		k=0;
+	}
+	for (unsigned int i=0; i<3; i++){
+		for (unsigned int j=0; j<2; j++){
+			if ((array[i][j]=='X' || array[i][j]=='O') && array[i][j]==array[i][j+1]) k++;
+			if (k==2) return true;
+		}
+		k=0;
+	}
+	for (unsigned int i=0; i<2; i++){
+		if ((array[i][i]=='X' || array[i][i]=='O') && array[i][i]==array[i+1][i+1]) k++;
+		if ((array[i][2-i]=='X' || array[i][2-i]=='O') && array[i][2-i]==array[i+1][2 - (i+1)]) t++;
+		if (k==2 || t==2) return true;
+	}
+	return false;
+}
+
+bool proverka(char** array){
+	unsigned int k=0;
+	for (unsigned int i=0; i<3; i++){
+		for (unsigned int j=0; j<3; j++){
+			if (!(array[i][j]=='X' || array[i][j]=='O')){
+				k++;
+			}
+			if (k>0) return true;
+		}
 	}
 	return false;
 }
 
 int main (){
 	unsigned int i=0;
-	char array[9];
+	char **array=pamyat_dlya_matritzi(array, 3, 3);
 	char op;
 	short move;
 	bool ok=true, letter=true;
@@ -197,7 +132,10 @@ int main (){
 		else op='O';
 		show_available_moves (array, op);
 		cin >> move;
-		while (move<1 || move>(10-i)){
+		if (move == 10-i) {
+			break;
+		}
+		while (move<1 || move>(9-i)){
 			cout << endl << "You can`t use this number, please, try again: ";
 			cin >> move;
 		}
@@ -205,11 +143,17 @@ int main (){
 		if (ok!=true) break;
 		show_game(array);
 		if (win_game(array)) {
-			cout << endl << "player " << op << " wonn ";
+			cout << endl << "Player " << op << " is winner!";
 			cin.get();
 			return 0;
 		}
 		letter=!letter;
 		i++;
 	}
+	
+	cout << endl << "Thanks for the game!";
+	delete_pamyat (array, 3);
+	cin.get();
+	return 0;
 }
+
