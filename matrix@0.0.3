@@ -180,7 +180,7 @@ float ** gauss(float ** &matrix, float ** matrix1, int rows) {
         return matrix;
     }
     else {
-        cout << "There is no reverse matrix" << endl;
+        cerr << "There is no reverse matrix" << endl;
         exit(0);
     }
 }
@@ -203,7 +203,7 @@ float** rewritefromfile(unsigned int &rows, unsigned int &columns, string FileNa
         }
     }
     else {
-        cout << "Error";
+        cerr << "Error";
         return nullptr;
     }
     input.close();
@@ -258,20 +258,20 @@ int main() {
                             break;
                         }
                         default:
-                        cout << "An error has occured while reading input data";
+                        cerr << "An error has occured while reading input data";
                     }
                 destroy(matrix2, rows1);
                 }
             }
-            else cout << "An error has occured while reading input data";
+            else cerr << "An error has occured while reading input data";
         }
         else if (rows1 == columns1 && op == 'R') {
             float **matrixA = new float *[columns1];
             write(cout, gauss(matrixA, matrix1, rows1), rows1, columns1);
             destroy(matrixA, rows1);
         }
-        else cout << "An error has occured while reading input data";
+        else cerr << "An error has occured while reading input data";
     }
-    else cout << "An error has occured while reading input data";
+    else cerr << "An error has occured while reading input data";
     destroy(matrix1, rows1);
 }
