@@ -1,0 +1,29 @@
+#include <iostream>
+#include <sstream>
+
+int main()
+  {
+ for( std::string line; std::getline( std::cin, line ); ) {
+ 	bool success = true;
+ 	int array[10];
+ 	std::istringstream stream( line );
+ 		for( unsigned int i = 0; i < 10; ++i ) {
+ 		if( !( stream >> array[i] ) ) {
+        		success = false;
+  				break;
+ 		}
+  	}
+ 	if( success ) {
+ 		int m = 0 ;
+ 		for( unsigned int i = 0; i < 9; ++i )
+ 		for( unsigned int j = i+1; j < 10; ++j )
+ 			if( array[i] > array[j] ) {
+ 				m++;
+ 			}
+ 		std::cout << m << std::endl;
+  		}
+ 	else {
+ 		std::cerr << "An error has occurred while reading numbers";
+  		}
+  	}
+  }
