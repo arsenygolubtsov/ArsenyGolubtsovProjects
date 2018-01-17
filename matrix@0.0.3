@@ -66,7 +66,7 @@ void write(ostream & stream, float ** elements, unsigned int rows, unsigned int 
     }
 }
 
-float ** add(float ** matrix1, float ** matrix2, float ** &matrix, unsigned int rows, unsigned int columns) {
+float ** add(float ** matrix1, float ** matrix2, float ** matrix, unsigned int rows, unsigned int columns) {
     matrix = new float *[rows];
     for (unsigned int i = 0; i < rows; i++) {
         matrix[i] = new float[columns];
@@ -77,7 +77,7 @@ float ** add(float ** matrix1, float ** matrix2, float ** &matrix, unsigned int 
     return matrix;
 }
 
-float ** sub(float ** matrix1, float ** matrix2, float ** &matrix, unsigned int rows, unsigned int columns) {
+float ** sub(float ** matrix1, float ** matrix2, float ** matrix, unsigned int rows, unsigned int columns) {
     matrix = new float *[rows];
     for (unsigned int i = 0; i < rows; i++) {
         matrix[i] = new float[columns];
@@ -115,7 +115,7 @@ double determ(float** Arr, unsigned int size) {
     return det;
 }
 
-float ** mult(float ** matrix1, float ** matrix2, float ** &matrix, unsigned int rows, unsigned int columns) {
+float ** mult(float ** matrix1, float ** matrix2, float ** matrix, unsigned int rows, unsigned int columns) {
     matrix = new float *[rows];
     for (unsigned int i = 0; i < rows; i++) {
         matrix[i] = new float[columns];
@@ -130,7 +130,7 @@ float ** mult(float ** matrix1, float ** matrix2, float ** &matrix, unsigned int
     return matrix;
 }
 
-float ** trans(float ** matrix1, float ** &matrix, unsigned int rows, unsigned int columns) {
+float ** trans(float ** matrix1, float ** matrix, unsigned int rows, unsigned int columns) {
     matrix = new float *[columns];
     for (unsigned int i = 0; i < columns; i++) {
         matrix[i] = new float[rows];
@@ -141,7 +141,7 @@ float ** trans(float ** matrix1, float ** &matrix, unsigned int rows, unsigned i
     return matrix;
 }
 
-float ** gauss(float ** &matrix, float ** matrix1, int rows) {
+float ** gauss(float ** matrix, float ** matrix1, int rows) {
     if (determ(matrix1, rows) != 0) {
         float a, b, result;
         for (int i = 0; i < rows; i++) {
@@ -232,29 +232,25 @@ int main() {
         matrix1 = rewritefromfile(rows1, columns1, fileName1);
         cin >> op;
         if (op == 'T') {
-            trans(matrix1, matrix, rows1, columns1);
-            write(cout, matrix, columns1, rows1);
+            write(cout, trans(matrix1, matrix, rows1, columns1), columns1, rows1);
         }
         else if (rows1 == columns1 && (op == '-' || op == '+' || op == '*')) {
-            if (readFileName(fileName2)) { 
-                cin.get();
-                float ** matrix2 = new float *[rows2];
-                matrix2 = rewritefromfile(rows2, columns2, fileName2);
-                if (rows1 == rows2 && columns1 == columns2) {
-                    switch (op) {
+                        cin.get();
+                        float ** matrix2 = new float *[rows2];
+                        if (readFileName(fileName2)) {
+                        matrix2 = rewritefromfile(rows2, columns2, fileName2);
+                        if (rows1 == rows2 && columns1 == columns2) {
+                        switch (op) {
                         case '+': {
-                            add(matrix1, matrix2, matrix, rows1, columns1);
-                            write(cout, matrix, rows1, columns1);
+                            write(cout, add(matrix1, matrix2, matrix, rows1, columns1), rows1, columns1);
                             break;
                         }
                         case '-': {
-                            sub(matrix1, matrix2, matrix, rows1, columns1);
-                            write(cout, matrix, rows1, columns1);
+                            write(cout, sub(matrix1, matrix2, matrix, rows1, columns1), rows1, columns1);
                             break;
                         }
                         case '*': {
-                            mult(matrix1, matrix2, matrix, rows1, columns1);
-                            write(cout, matrix, rows1, columns1);
+                            write(cout, mult(matrix1, matrix2, matrix, rows1, columns1), rows1, columns1);
                             break;
                         }
                         default:
