@@ -53,11 +53,11 @@ void show_available_moves (char **array, char op){
 				if (i==0){
 					cout << ++k << ". mark cell a" << j+1 << " as " << op << endl;
 				}
-				if (i==1){
-					cout << ++k << ". mark cell b" << j+1 << " as " << op << endl;
+				else if (i==1){
+					     cout << ++k << ". mark cell b" << j+1 << " as " << op << endl;
 				}
-				if (i==2){
-					cout << ++k << ". mark cell c" << j+1 << " as " << op << endl;
+				else{
+			           cout << ++k << ". mark cell c" << j+1 << " as " << op << endl;
 				}
 			}
 		}
