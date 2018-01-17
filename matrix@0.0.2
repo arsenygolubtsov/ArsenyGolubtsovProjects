@@ -199,7 +199,7 @@ int main() {
 			cin.get();
 			float ** matrix2 = new float *[rows2];
 			if( read(matrix2, rows2, columns2) && rows1 == rows2 && columns1 == columns2) {
-                    switch (op) {
+                        switch (op) {
                         case '+': {
                             write(cout, add(matrix1, matrix2, matrix, rows1, columns1), rows1, columns1);
                             break;
