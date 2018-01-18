@@ -189,7 +189,7 @@ float** rewritefromfile(unsigned int &rows, unsigned int &columns, string FileNa
     char op;
     ifstream input;
     input.open(FileName.c_str());
-    if ( !input.is_open() ) {
+    if ( input.is_open() ) {
         string  string;
         getline(input,  string);
         istringstream stream( string);
